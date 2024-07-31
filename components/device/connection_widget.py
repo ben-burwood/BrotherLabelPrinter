@@ -2,7 +2,7 @@ from PySide6.QtWidgets import QButtonGroup, QHBoxLayout, QRadioButton, QWidget
 
 from print.connection import ConnectionType
 
-class ConnectionSelectorWidget(QWidget):
+class ConnectionWidget(QWidget):
 
     def __init__(self) -> None:
         super().__init__()
@@ -21,6 +21,6 @@ class ConnectionSelectorWidget(QWidget):
         self.setLayout(radio_layout)
 
     @property
-    def selected(self) -> ConnectionType:
+    def connection(self) -> ConnectionType:
         selected_button_text = self.radio_group.checkedButton().text()
         return ConnectionType.get_by_value(selected_button_text)

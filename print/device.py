@@ -2,7 +2,6 @@ from enum import Enum, auto
 
 from labelprinterkit.printers import BackendType, E500, E550W, GenericPrinter, H500, P700, P750W
 
-
 class Device(Enum):
     PTP_700 = auto()
     PTP_750W = auto()
@@ -22,10 +21,3 @@ class Device(Enum):
                 return E500(backend)
             case Device.PTP_E550W:
                 return E550W(backend)
-
-    @staticmethod
-    def get_by_name(name: str) -> "Device":
-        for device in Device:
-            if device.name == name:
-                return device
-        raise ValueError(f"Device with name {name} not found")

@@ -26,7 +26,7 @@ class FontWidget(QWidget):
     @property
     def font_path(self) -> str:
         """Truetype Font File (.ttf) - Under Windows, if the file is not found in this filename, the loader also looks in Windows fonts/ directory."""
-        return Font.get_by_name(self._font_path_edit.currentText()).value
+        return Font[self._font_path_edit.currentText()].value
 
     @property
     def font_size(self) -> int:

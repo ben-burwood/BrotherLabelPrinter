@@ -1,7 +1,7 @@
 from PySide6.QtWidgets import QPushButton, QVBoxLayout, QWidget
 from labelprinterkit.printers import BasePrinter
 
-from components.device.connection_selector_widget import ConnectionSelectorWidget
+from components.device.connection_widget import ConnectionWidget
 from components.device.device_selector_widget import DeviceSelectorWidget
 from print.device import Device
 
@@ -11,7 +11,7 @@ class DeviceWidget(QWidget):
 
         self.printer: BasePrinter | None = None
 
-        self.connection_type_widget = ConnectionSelectorWidget()
+        self.connection_type_widget = ConnectionWidget()
 
         self.device_selector_widget = DeviceSelectorWidget(devices=[d.name for d in Device])
 
@@ -26,7 +26,7 @@ class DeviceWidget(QWidget):
         self.setLayout(device_layout)
 
     def connect_device(self) -> None:
-        backend = self.connection_type_widget.selected.backend
-        self.printer = self.device_selector_widget.selected.printer(backend)
+        backend = self.connection_type_widget.connection.backend
+        self.printer = self.device_selector_widget.device.printer(backend)
 
         print(self.printer.get_status())
