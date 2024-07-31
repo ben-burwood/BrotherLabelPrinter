@@ -23,4 +23,4 @@ class ConnectionSelectorWidget(QWidget):
     @property
     def selected(self) -> ConnectionType:
         selected_button_text = self.radio_group.checkedButton().text()
-        return ConnectionType.get_by_name(selected_button_text)
+        return ConnectionType.get_by_value(selected_button_text)

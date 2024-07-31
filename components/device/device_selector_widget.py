@@ -1,5 +1,7 @@
 from PySide6.QtWidgets import QComboBox, QHBoxLayout, QWidget
 
+from print.device import Device
+
 
 class DeviceSelectorWidget(QWidget):
     def __init__(self, devices: list[str]) -> None:
@@ -14,5 +16,6 @@ class DeviceSelectorWidget(QWidget):
         self.setLayout(dropdown_layout)
 
     @property
-    def selected(self) -> str:
-        return self.device_dropdown.currentText()
+    def selected(self) -> Device:
+        selected_device_text = self.device_dropdown.currentText()
+        return Device.get_by_name(selected_device_text)
