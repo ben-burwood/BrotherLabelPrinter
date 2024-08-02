@@ -3,6 +3,7 @@ from PySide6.QtWidgets import QComboBox, QFormLayout, QSpinBox, QWidget
 
 from BrotherP700USBControl.labelprinterkit.utils.font import FontPath, get_linux_fonts
 
+
 class FontWidget(QWidget):
     def __init__(self) -> None:
         super().__init__()

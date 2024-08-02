@@ -1,3 +1,3 @@
-[submodule "BrotherP700USBControl"]
-	path = BrotherP700USBControl
-	url = https://github.com/benbur98/BrotherP700USBControl
+[submodule "BrotherLabelPrinterControl"]
+	path = BrotherLabelPrinterControl
+	url = https://github.com/benbur98/BrotherLabelPrinterControl
