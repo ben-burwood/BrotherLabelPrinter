@@ -1,16 +1,18 @@
+from PySide6.QtCore import Signal
 from PySide6.QtWidgets import QPushButton, QVBoxLayout, QWidget
-from labelprinterkit.printers import BasePrinter
+from labelprinterkit.printers import GenericPrinter
 
 from components.device.connection_widget import ConnectionWidget
 from components.device.device_selector_widget import DeviceSelectorWidget
 from print.device import Device
 
-
 class DeviceWidget(QWidget):
+    printer_connected = Signal(GenericPrinter)
+
     def __init__(self) -> None:
         super().__init__()
 
-        self.printer: BasePrinter | None = None
+        self.printer: GenericPrinter | None = None
 
         self.connection_type_widget = ConnectionWidget()
 
@@ -29,5 +31,4 @@ class DeviceWidget(QWidget):
     def connect_device(self) -> None:
         backend = self.connection_type_widget.connection.backend
         self.printer = self.device_selector_widget.device.printer(backend)
-
-        print(self.printer.get_status())
+        self.printer_connected.emit(self.printer)

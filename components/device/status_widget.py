@@ -3,7 +3,7 @@ from labelprinterkit.printers import GenericPrinter
 
 
 class StatusWidget(QWidget):
-    def __init__(self, printer: GenericPrinter) -> None:
+    def __init__(self, printer: GenericPrinter = None) -> None:
         super().__init__()
 
         self.printer = printer
@@ -25,6 +25,9 @@ class StatusWidget(QWidget):
 
     def refresh_status(self) -> None:
         """Trigger the get_status Method for the Printer and Display the Result"""
+        if not self.printer:
+            return
+
         status = self.printer.get_status()
 
         self.status_table.setRowCount(len(status._data))
@@ -38,3 +41,7 @@ class StatusWidget(QWidget):
         else:
             self.status_label.setText("Error")
             self.status_label.setStyleSheet("background-color: red;")
+
+    def update_printer(self, printer: GenericPrinter) -> None:
+        self.printer = printer
+        self.refresh_status()
