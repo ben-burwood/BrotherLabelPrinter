@@ -1,7 +1,7 @@
 from PySide6.QtWidgets import QHBoxLayout, QLineEdit, QPushButton, QWidget
 
 
-class PrintWidget(QWidget):
+class LabelWidget(QWidget):
     def __init__(self) -> None:
         super().__init__()
 

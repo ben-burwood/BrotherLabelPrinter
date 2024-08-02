@@ -4,6 +4,7 @@ from labelprinterkit.label import Padding
 from components.label.settings.font import FontWidget
 from components.label.settings.padding import PaddingWidget
 
+
 class LabelSettingsWidget(QWidget):
     def __init__(self) -> None:
         super().__init__()

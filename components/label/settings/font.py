@@ -3,6 +3,7 @@ from PySide6.QtWidgets import QComboBox, QFormLayout, QSpinBox, QWidget
 
 from print.font import Font
 
+
 class FontWidget(QWidget):
     def __init__(self) -> None:
         super().__init__()

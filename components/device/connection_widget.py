@@ -2,6 +2,7 @@ from PySide6.QtWidgets import QButtonGroup, QHBoxLayout, QRadioButton, QWidget
 
 from print.connection import ConnectionType
 
+
 class ConnectionWidget(QWidget):
 
     def __init__(self) -> None:

@@ -2,6 +2,7 @@ from enum import Enum, auto
 
 from labelprinterkit.printers import BackendType, E500, E550W, GenericPrinter, H500, P700, P750W
 
+
 class Device(Enum):
     PTP_700 = auto()
     PTP_750W = auto()

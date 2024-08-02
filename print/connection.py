@@ -5,6 +5,7 @@ from labelprinterkit.backends.network import NetworkBackend
 from labelprinterkit.backends.usb import PyUSBBackend
 from labelprinterkit.printers import BackendType
 
+
 class ConnectionType(Enum):
     USB = "USB"
     WIFI = "WiFi"

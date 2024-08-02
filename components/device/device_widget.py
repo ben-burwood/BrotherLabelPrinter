@@ -5,6 +5,7 @@ from components.device.connection_widget import ConnectionWidget
 from components.device.device_selector_widget import DeviceSelectorWidget
 from print.device import Device
 
+
 class DeviceWidget(QWidget):
     def __init__(self) -> None:
         super().__init__()
