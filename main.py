@@ -7,6 +7,7 @@ from components.device.status_widget import StatusWidget
 from components.label.label_settings_widget import LabelSettingsWidget
 from components.label.label_widget import LabelWidget
 
+
 class MainWindow(QMainWindow):
     def __init__(self) -> None:
         super().__init__()
