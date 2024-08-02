@@ -1,6 +1,6 @@
 from PySide6.QtWidgets import QLabel, QPushButton, QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget
-from labelprinterkit.printers import GenericPrinter
 
+from BrotherP700USBControl.labelprinterkit.printers import GenericPrinter
 
 class StatusWidget(QWidget):
     def __init__(self, printer: GenericPrinter = None) -> None:

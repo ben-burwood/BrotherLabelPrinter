@@ -1,7 +1,6 @@
 from PySide6.QtWidgets import QComboBox, QHBoxLayout, QWidget
 
-from print.device import Device
-
+from BrotherP700USBControl.labelprinterkit.printers.main import Printer
 
 class DeviceSelectorWidget(QWidget):
     def __init__(self, devices: list[str]) -> None:
@@ -16,5 +15,5 @@ class DeviceSelectorWidget(QWidget):
         self.setLayout(dropdown_layout)
 
     @property
-    def device(self) -> Device:
-        return Device[self.device_dropdown.currentText()]
+    def device(self) -> Printer:
+        return Printer[self.device_dropdown.currentText()]

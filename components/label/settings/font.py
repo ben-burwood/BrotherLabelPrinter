@@ -1,15 +1,16 @@
 from PIL import ImageFont
 from PySide6.QtWidgets import QComboBox, QFormLayout, QSpinBox, QWidget
 
-from print.font import Font
-
+from BrotherP700USBControl.labelprinterkit.utils.font import FontPath, get_linux_fonts
 
 class FontWidget(QWidget):
     def __init__(self) -> None:
         super().__init__()
 
+        self._fonts = get_linux_fonts()
+
         self._font_path_edit = QComboBox()
-        self._font_path_edit.addItems([font.name for font in Font])
+        self._font_path_edit.addItems([font for font in self._fonts.keys()])
 
         self._font_size_edit = QSpinBox()
         self._font_index_edit = QSpinBox()
@@ -25,9 +26,9 @@ class FontWidget(QWidget):
         self.setLayout(layout)
 
     @property
-    def font_path(self) -> str:
+    def font_path(self) -> FontPath:
         """Truetype Font File (.ttf) - Under Windows, if the file is not found in this filename, the loader also looks in Windows fonts/ directory."""
-        return Font[self._font_path_edit.currentText()].value
+        return self._fonts[self._font_path_edit.currentText()][0]
 
     @property
     def font_size(self) -> int:

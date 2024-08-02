@@ -1,9 +1,8 @@
 from PySide6.QtWidgets import QFormLayout, QSpinBox, QWidget
-from labelprinterkit.label import Padding
 
+from BrotherP700USBControl.labelprinterkit.label import Padding
 from components.label.settings.font import FontWidget
 from components.label.settings.padding import PaddingWidget
-
 
 class LabelSettingsWidget(QWidget):
     def __init__(self) -> None:

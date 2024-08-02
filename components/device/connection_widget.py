@@ -1,14 +1,13 @@
 from PySide6.QtWidgets import QButtonGroup, QHBoxLayout, QRadioButton, QWidget
 
-from print.connection import ConnectionType
-
+from BrotherP700USBControl.labelprinterkit.backends.main import Backend
 
 class ConnectionWidget(QWidget):
 
     def __init__(self) -> None:
         super().__init__()
 
-        radio_buttons = [QRadioButton(connection_type.value) for connection_type in ConnectionType]
+        radio_buttons = [QRadioButton(backend.value) for backend in Backend]
         radio_buttons[0].setChecked(True)
 
         self.radio_group = QButtonGroup()
@@ -22,6 +21,6 @@ class ConnectionWidget(QWidget):
         self.setLayout(radio_layout)
 
     @property
-    def connection(self) -> ConnectionType:
+    def backend(self) -> Backend:
         selected_button_text = self.radio_group.checkedButton().text()
-        return ConnectionType.get_by_value(selected_button_text)
+        return Backend.get(selected_button_text)
