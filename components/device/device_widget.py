@@ -1,8 +1,8 @@
 from PySide6.QtCore import Signal
 from PySide6.QtWidgets import QPushButton, QVBoxLayout, QWidget
 
-from BrotherP700USBControl.labelprinterkit.printers import GenericPrinter
-from BrotherP700USBControl.labelprinterkit.printers.main import Printer
+from BrotherLabelPrinterControl.labelprinterkit.printers import GenericPrinter
+from BrotherLabelPrinterControl.labelprinterkit.printers.main import Printer
 from components.device.connection_widget import ConnectionWidget
 from components.device.device_selector_widget import DeviceSelectorWidget
 

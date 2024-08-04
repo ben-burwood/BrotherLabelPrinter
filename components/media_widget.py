@@ -1,6 +1,6 @@
 from PySide6.QtWidgets import QComboBox, QHBoxLayout, QWidget
 
-from BrotherP700USBControl.labelprinterkit.constants import Media
+from BrotherLabelPrinterControl.labelprinterkit.constants import Media
 
 class MediaWidget(QWidget):
     def __init__(self) -> None:

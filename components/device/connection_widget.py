@@ -1,6 +1,6 @@
 from PySide6.QtWidgets import QButtonGroup, QHBoxLayout, QRadioButton, QWidget
 
-from BrotherP700USBControl.labelprinterkit.backends.main import Backend
+from BrotherLabelPrinterControl.labelprinterkit.backends.main import Backend
 
 class ConnectionWidget(QWidget):
 
