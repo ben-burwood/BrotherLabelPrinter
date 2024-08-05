@@ -2,6 +2,7 @@ from PySide6.QtWidgets import QButtonGroup, QHBoxLayout, QRadioButton, QWidget
 
 from BrotherLabelPrinterControl.labelprinterkit.backends.main import Backend
 
+
 class ConnectionWidget(QWidget):
 
     def __init__(self) -> None:

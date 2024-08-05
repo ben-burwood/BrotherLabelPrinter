@@ -2,6 +2,7 @@ from PySide6.QtWidgets import QComboBox, QHBoxLayout, QWidget
 
 from BrotherLabelPrinterControl.labelprinterkit.printers.main import Printer
 
+
 class DeviceSelectorWidget(QWidget):
     def __init__(self, devices: list[str]) -> None:
         super().__init__()

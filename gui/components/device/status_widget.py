@@ -2,6 +2,7 @@ from PySide6.QtWidgets import QLabel, QPushButton, QTableWidget, QTableWidgetIte
 
 from BrotherLabelPrinterControl.labelprinterkit.printers import GenericPrinter
 
+
 class StatusWidget(QWidget):
     def __init__(self, printer: GenericPrinter = None) -> None:
         super().__init__()

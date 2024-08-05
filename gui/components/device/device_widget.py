@@ -6,6 +6,7 @@ from BrotherLabelPrinterControl.labelprinterkit.printers.main import Printer
 from components.device.connection_widget import ConnectionWidget
 from components.device.device_selector_widget import DeviceSelectorWidget
 
+
 class DeviceWidget(QWidget):
     printer_connected = Signal(GenericPrinter)
 
