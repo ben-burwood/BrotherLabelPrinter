@@ -1,6 +1,6 @@
 from PySide6.QtWidgets import QGridLayout, QSpinBox, QWidget
 
-from BrotherLabelPrinterControl.labelprinterkit.labels.text import Padding
+from labelprinterkit.labels.text import Padding
 
 
 class PaddingWidget(QWidget):
