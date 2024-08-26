@@ -4,6 +4,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 
 from api.PrinterManager import PrinterManager
+from api.config import get_font
 from labelprinterkit.constants import Media
 from labelprinterkit.job import Job
 from labelprinterkit.labels.box import Box
@@ -28,7 +29,7 @@ app.router.lifespan_context = lifespan
 class PrintRequest(BaseModel):
     text: str
     height: int
-    font: str
+    font: str = get_font()
 
     @property
     def label(self) -> Label:
