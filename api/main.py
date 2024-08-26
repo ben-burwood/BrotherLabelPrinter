@@ -13,7 +13,6 @@ app = FastAPI()
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    global config
     config = Config()
     if config.backend is None or config.printer is None:
         raise BrotherPrinterApiError("Must Provide a Valid Backend AND Printer Configuration")
@@ -33,7 +32,7 @@ def print_label(request: PrintRequest):
 
     label = request.label
 
-    job = Job(config.media)
+    job = Job(request.media)
     job.add_page(label)
 
     printer.print(job)
