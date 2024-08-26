@@ -21,29 +21,26 @@ class Config:
     @property
     def backend(self) -> Backend | None:
         """Check the Config for a Supplied Default Backend"""
-
-        def get_backend_from_str(backend: str) -> Backend | None:
-            return next((b for b in Backend if b.name.lower() == backend.lower()), None)
-
-        return get_backend_from_str(self._config.get("backend", ""))
+        try:
+            return Backend.get(self._config.get("backend", ""))
+        except ValueError:
+            return None
 
     @property
     def printer(self) -> Printer | None:
         """Check the Config for a Supplied Default Printer"""
-
-        def get_printer_from_str(printer: str) -> Printer | None:
-            return next((p for p in Printer if p.name.lower() == printer.lower()), None)
-
-        return get_printer_from_str(self._config.get("printer", ""))
+        try:
+            return Printer.get(self._config.get("printer", ""))
+        except ValueError:
+            return None
 
     @property
     def media(self) -> Media | None:
         """Check the Config for a Supplied Default Media"""
-
-        def get_media_from_str(media: str) -> Media | None:
-            return next((m for m in Media if m.name.lower() == media.lower()), None)
-
-        return get_media_from_str(self._config.get("media", ""))
+        try:
+            return Media.get(self._config.get("media", ""))
+        except ValueError:
+            return None
 
     @property
     def font(self) -> str | None:
