@@ -1,6 +1,6 @@
 backend: usb
 printer: PTP_700
 
-media:
+media: W12
 
 font:
