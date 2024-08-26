@@ -17,8 +17,6 @@ cd BrotherLabelPrinterControl
 
 pip install -r requirements.txt
 
-poetry build
-
 poetry install
 
 
