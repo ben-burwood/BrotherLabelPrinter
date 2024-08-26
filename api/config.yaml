@@ -1,3 +1,6 @@
-font:
+backend: usb
+printer: PTP_700
 
 media:
+
+font:
