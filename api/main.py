@@ -2,19 +2,27 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 
+from api import BrotherPrinterApiError
 from api.PrinterManager import PrinterManager
+from api.config import Config
 from api.print import PrintRequest
 from labelprinterkit.constants import Media
 from labelprinterkit.job import Job
-from labelprinterkit.printers.main import Printer
 
 app = FastAPI()
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    global config
+    config = Config()
+
+    if config.backend is None or config.printer is None:
+        raise BrotherPrinterApiError("Must Provide a Valid Backend AND Printer Configuration")
+
     global printer_manager
-    printer_manager = PrinterManager(Printer.PTP_700)
+    printer_manager = PrinterManager(config.backend, config.printer)
+
     yield
 
 
