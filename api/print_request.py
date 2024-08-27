@@ -11,19 +11,22 @@ from labelprinterkit.labels.text import Padding, Text
 class PrintRequest(BaseModel):
     text: str
     height: int
-    padding: dict[str, int] = Field(default_factory=lambda: {"top": 0, "right": 0, "bottom": 0, "left": 0})
-    font: str = Config().font
-    media: str = Config().media
+    padding: Padding = Field(default_factory=lambda: Padding(top=0, right=0, bottom=0, left=0))
+    font: str = Field(default_factory=lambda: Config().font)
+    media: Media = Field(default_factory=lambda: Config().media)
 
     @model_validator(mode="before")
     def set_padding(cls, values: dict[str, Any]) -> dict[str, Any]:
-        padding_dict = values.get("padding", {"top": 0, "right": 0, "bottom": 0, "left": 0})
-        values["padding"] = Padding.from_dict(padding_dict)
+        padding = values.get("padding")
+        if isinstance(padding, dict):
+            values["padding"] = Padding.from_dict(padding)
         return values
 
     @model_validator(mode="before")
     def set_media(cls, values: dict[str, Any]) -> dict[str, Any]:
-        values["media"] = Media.get(values.get("media"))
+        media = values.get("media")
+        if isinstance(media, str):
+            values["media"] = Media.get(media)
         return values
 
     def generate_label(self, media: Media) -> Label:
