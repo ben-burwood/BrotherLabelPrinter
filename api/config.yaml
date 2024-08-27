@@ -3,4 +3,4 @@ printer: PTP_700
 
 media: W12
 
-font:
+font: /root/.local/share/fonts/fonts/ttf/JetBrainsMono-Regular.ttf

@@ -28,13 +28,13 @@ font: /path/to/font.ttf
 
 `POST /print`
 
-#### Request Parameters:
+#### Request Body:
 
 ```json
 {
   "text": "Hello World",
-  "height": 10,
-  "font": "font",
+  "height": 50,
+  "font": "font.ttf",
   "padding": {
     "top": 0,
     "right": 0,
