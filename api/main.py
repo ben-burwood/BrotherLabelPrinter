@@ -30,7 +30,7 @@ app.router.lifespan_context = lifespan
 def print_label(request: PrintRequest):
     printer = printer_manager.printer
 
-    label = request.label
+    label = request.generate_label(request.media)
 
     job = Job(request.media)
     job.add_page(label)

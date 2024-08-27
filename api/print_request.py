@@ -1,4 +1,6 @@
-from pydantic import BaseModel, Field
+from typing import Any
+
+from pydantic import BaseModel, Field, model_validator
 
 from api.config import Config
 from labelprinterkit.constants import Media
@@ -9,20 +11,26 @@ from labelprinterkit.labels.text import Padding, Text
 class PrintRequest(BaseModel):
     text: str
     height: int
-    _padding: dict[str, int] = Field(default_factory=lambda: {"top": 0, "right": 10, "bottom": 0, "left": 0})
+    padding: dict[str, int] = Field(default_factory=lambda: {"top": 0, "right": 0, "bottom": 0, "left": 0})
     font: str = Config().font
-    _media: str = Config().media
+    media: str = Config().media
 
-    @property
-    def padding(self) -> Padding:
-        return Padding.from_dict(self._padding)
+    @model_validator(mode="before")
+    def set_padding(cls, values: dict[str, Any]) -> dict[str, Any]:
+        padding_dict = values.get("padding", {"top": 0, "right": 0, "bottom": 0, "left": 0})
+        values["padding"] = Padding.from_dict(padding_dict)
+        return values
 
-    @property
-    def media(self) -> Media:
-        return Media.get(self._media)
+    @model_validator(mode="before")
+    def set_media(cls, values: dict[str, Any]) -> dict[str, Any]:
+        values["media"] = Media.get(values.get("media"))
+        return values
 
-    @property
-    def label(self) -> Label:
-        text = Text(self.height, self.text, font_path=self.font, padding=self.padding)
-        box = Box(70, text)
+    def generate_label(self, media: Media) -> Label:
+        height = min(media.value.printarea, self.height)  # Cap the Height to the media's printarea
+
+        text = Text(height, self.text, font_path=self.font, padding=self.padding)
+
+        box = Box(media.value.printarea, text)
+
         return Label(box)

@@ -8,3 +8,14 @@ This Repo is a Wrapper for and uses my Fork (https://github.com/benbur98/Brother
 
 Labels MUST use the full pixel/points PrintArea for the given Media.
 e.g. the 12mm has 70 pixel/points so the content (Text) MUST fill the 70 pixel/points.
+
+# Install
+
+Clone the repository and include submodules
+`git clone --recurse-submodules https://github.com/benbur98/BrotherLabelPrinter.git`
+
+Run the Scripts:
+
+1. setup.sh
+2. font.sh
+3. api.sh

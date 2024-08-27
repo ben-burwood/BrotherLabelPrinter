@@ -1,10 +1,3 @@
-# Run this Script with the following command:
-#/bin/bash -c "$(curl -fsSL https://github.com/benbur98/BrotherLabelPrinter/server/api.sh)"
-
-git clone https://github.com/benbur98/BrotherLabelPrinter.git
-
-
-cd BrotherLabelPrinter
 
 python -m venv brother-printer-venv
 
