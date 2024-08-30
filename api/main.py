@@ -1,12 +1,13 @@
+import time
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
+from labelprinterkit.job import Job
 
 from api import BrotherPrinterApiError
 from api.config import Config
 from api.print_request import PrintRequest
 from api.printer_manager import PrinterManager
-from labelprinterkit.job import Job
 
 app = FastAPI()
 
@@ -19,6 +20,9 @@ async def lifespan(app: FastAPI):
 
     global printer_manager
     printer_manager = PrinterManager(config.backend, config.printer)
+
+    printer_manager.toggle_power_button()
+    time.sleep(5)
 
     yield
 

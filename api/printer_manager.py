@@ -3,6 +3,9 @@ from labelprinterkit.backends.usb import PyUSBBackend
 from labelprinterkit.printers import GenericPrinter
 from labelprinterkit.printers.main import Printer
 
+from motor.constants import MotorPosition
+from motor.motor import Motor
+
 
 class PrinterManager:
     _instance = None
@@ -28,3 +31,12 @@ class PrinterManager:
     @property
     def printer(self) -> GenericPrinter:
         return self._printer
+
+    @staticmethod
+    def toggle_power_button() -> None:
+        motor = Motor()
+        motor.set_position(MotorPosition.LEFT)
+        motor.enable_pwm()
+        motor.set_position(MotorPosition.RIGHT)
+        motor.set_position(MotorPosition.LEFT)
+        motor.disable_pwm()

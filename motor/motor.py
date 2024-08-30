@@ -2,6 +2,7 @@ import subprocess
 
 from motor.constants import MotorPosition, PWM_PATH, PWM_PERIOD
 
+
 class Motor:
 
     def __init__(self, pwm_channel: int = 1) -> None:
@@ -37,3 +38,8 @@ class Motor:
     def set_position(self, position: MotorPosition) -> None:
         """Set the Motor Position"""
         self._set_duty_cycle(position.value)
+
+    def set_position_percentage(self, percentage: int) -> None:
+        """Set the Motor Position by Percentage of the Position Between Full Left to Full Right"""
+        position_value = MotorPosition.percentage(percentage)
+        self._set_duty_cycle(position_value)
