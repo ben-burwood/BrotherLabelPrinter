@@ -1,3 +1,5 @@
+import time
+
 from labelprinterkit.backends.main import Backend
 from labelprinterkit.backends.usb import PyUSBBackend
 from labelprinterkit.printers import GenericPrinter
@@ -37,6 +39,9 @@ class PrinterManager:
         motor = Motor()
         motor.set_position_percentage(initial_position)
         motor.enable_pwm()
+        time.sleep(2)
         motor.set_position_percentage(pressed_position)
+        time.sleep(2)
         motor.set_position_percentage(initial_position)
+        time.sleep(2)
         motor.disable_pwm()
