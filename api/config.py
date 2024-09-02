@@ -1,5 +1,4 @@
 import yaml
-
 from labelprinterkit.backends.main import Backend
 from labelprinterkit.constants import Media
 from labelprinterkit.printers.main import Printer
@@ -51,3 +50,13 @@ class Config:
             return list(get_fonts().values())[0][0].as_posix()
         except IndexError:
             return None
+
+    @property
+    def motor_initial(self) -> int:
+        """Check the Config for the Initial Motor Position"""
+        return self._config.get("motor_initial", 50)
+
+    @property
+    def motor_pressed(self) -> int:
+        """Check the Config for the Pressed Motor Position"""
+        return self._config.get("motor_pressed", 25)

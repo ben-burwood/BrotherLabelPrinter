@@ -18,11 +18,12 @@ async def lifespan(app: FastAPI):
     if config.backend is None or config.printer is None:
         raise BrotherPrinterApiError("Must Provide a Valid Backend AND Printer Configuration")
 
+
+    PrinterManager.toggle_power_button(config.motor_initial, config.motor_pressed)
+    time.sleep(10)
+
     global printer_manager
     printer_manager = PrinterManager(config.backend, config.printer)
-
-    printer_manager.toggle_power_button()
-    time.sleep(5)
 
     yield
 
