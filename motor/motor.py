@@ -1,6 +1,6 @@
 import subprocess
 
-from motor.constants import MotorPosition, PWM_PATH, PWM_PERIOD
+from motor.constants import PWM_PATH, PWM_PERIOD, MotorPosition
 
 
 class Motor:
@@ -14,7 +14,11 @@ class Motor:
 
     @staticmethod
     def _setup_pwm() -> None:
-        subprocess.call(f"echo 1 > {PWM_PATH}/export", shell=True)
+        try:
+            subprocess.call(f"echo 1 > {PWM_PATH}/export", shell=True)
+        except subprocess.CalledProcessError:
+            # If the PWM Channel is already exported, pass
+            pass
 
     def _set_period(self, period: int) -> None:
         """The Period is the time it takes to complete one cycle"""
