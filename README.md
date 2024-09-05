@@ -20,6 +20,17 @@ Configure the config.yaml in the api Module
 
 ## Docker
 
+### USB Device
+
+Check the Device Path for the USB BrotherLabelPrinter in the docker-compose.yaml File, to ensure this is passed through.
+
+The device path is usually in the format /dev/bus/usb/00x/00y, where 00x is the bus number and 00y is the device number.
+
+`Bus 004 Device 007: ID 0000:0000 Brother Industries, Ltd PT-P700 P-touch Label Printer`
+    In the example, the device path would be /dev/bus/usb/004/007.
+
+### Run
+
 Ensure that Docker and DockerCompose are installed on the Host System
 ```sh
 apt install docker docker-compose
