@@ -11,8 +11,8 @@ class PrintRequest(BaseModel):
     text: str
     height: int
     padding: Padding = Field(default_factory=lambda: Padding(top=0, right=0, bottom=0, left=0))
-    font: str = Field(default_factory=lambda: Config().font)
-    media: Media = Field(default_factory=lambda: Config().media)
+    font: str = Field(default_factory=lambda: Config.get().font)
+    media: Media = Field(default_factory=lambda: Config.get().media)
 
     @field_validator("padding")
     def set_padding(cls, padding: dict[str, int] | Padding) -> Padding:

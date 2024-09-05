@@ -9,8 +9,8 @@ RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/JetBrains/JetBr
 # Build and Install BrotherLabelPrinterControl Submodule
 COPY ./BrotherLabelPrinterControl /BrotherLabelPrinterControl
 WORKDIR /BrotherLabelPrinterControl
-RUN pip install -r requirements.txt
-RUN pip install .
+RUN pip install --no-cache-dir --upgrade -r requirements.txt
+RUN pip install --no-cache-dir .
 
 WORKDIR /
 
