@@ -14,8 +14,10 @@ e.g. the 12mm has 70 pixel/points so the content (Text) MUST fill the 70 pixel/p
 Clone the repository and include submodules
 `git clone --recurse-submodules https://github.com/benbur98/BrotherLabelPrinter.git`
 
-Run the Scripts:
+Configure the config.yaml in the api Module
 
-1. setup.sh
-2. font.sh
-3. api.sh
+## Docker
+
+Ensure that Docker is installed on the Host System - `apt install docker`.
+
+`docker-compose up -d`

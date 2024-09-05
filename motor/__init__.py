@@ -1,0 +1,3 @@
+
+class MotorError(Exception):
+    pass

@@ -36,6 +36,9 @@ class PrinterManager:
     @staticmethod
     def toggle_power_button(initial_position: int = 50, pressed_position: int = 25) -> None:
         """Toggles the Power Button of the Printer by moving the Motor to the Pressed Position and then back to the Initial"""
+        if not Motor.is_supported():
+            return
+
         motor = Motor()
         motor.set_position_percentage(initial_position)
         motor.enable_pwm()

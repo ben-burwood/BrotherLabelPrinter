@@ -4,10 +4,10 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from labelprinterkit.job import Job
 
-from api import BrotherPrinterApiError
-from api.config import Config
-from api.print_request import PrintRequest
-from api.printer_manager import PrinterManager
+from . import BrotherPrinterApiError
+from .config import Config
+from .print_request import PrintRequest
+from .printer_manager import PrinterManager
 
 app = FastAPI()
 

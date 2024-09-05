@@ -1,17 +1,11 @@
-from pydantic import BaseModel, Field, field_validator
-
-from api.config import Config
 from labelprinterkit.constants import Media
 from labelprinterkit.labels.box import Box
 from labelprinterkit.labels.label import Label
 from labelprinterkit.labels.text import Padding, Text
 from pydantic import BaseModel, Field, field_validator
 
-from api.config import Config
-from labelprinterkit.constants import Media
-from labelprinterkit.labels.box import Box
-from labelprinterkit.labels.label import Label
-from labelprinterkit.labels.text import Padding, Text
+from .config import Config
+
 
 class PrintRequest(BaseModel):
     text: str

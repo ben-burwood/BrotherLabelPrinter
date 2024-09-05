@@ -1,0 +1,12 @@
+services:
+  print_server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: print_server
+    ports:
+      - "80:80"
+    privileged: true
+    # devices:
+      # - "/dev/ttyUSB0:/dev/ttyUSB0"
+    restart: always
