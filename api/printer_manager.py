@@ -11,19 +11,34 @@ from motor.motor import Motor
 class PrinterManager:
     _instance = None
 
-    def __init__(self, backend_type: Backend, printer_type: Printer) -> None:
+    def __init__(
+        self,
+        backend_type: Backend,
+        printer_type: Printer,
+        vendor_id: int | None = None,
+        product_id: int | None = None,
+    ) -> None:
         self._backend_type = backend_type
         self._printer_type = printer_type
 
-    def __new__(cls, backend_type: Backend, printer_type: Printer) -> "PrinterManager":
+        self._vendor_id = vendor_id
+        self._product_id = product_id
+
+    def __new__(
+        cls,
+        backend_type: Backend,
+        printer_type: Printer,
+        vendor_id: int | None = None,
+        product_id: int | None = None,
+    ) -> "PrinterManager":
         if cls._instance is None:
             cls._instance = super(PrinterManager, cls).__new__(cls)
-            cls._instance.__init__(backend_type, printer_type)
+            cls._instance.__init__(backend_type, printer_type, vendor_id, product_id)
             cls._instance._initialize_printer()
         return cls._instance
 
     def _initialize_printer(self) -> None:
-        backend = self._backend_type.backend()
+        backend = self._backend_type.backend(self._vendor_id, self._product_id)
         if isinstance(backend, PyUSBBackend):
             backend.detach_from_kernel()
 
@@ -34,7 +49,9 @@ class PrinterManager:
         return self._printer
 
     @staticmethod
-    def toggle_power_button(initial_position: int = 50, pressed_position: int = 25) -> None:
+    def toggle_power_button(
+        initial_position: int = 50, pressed_position: int = 25
+    ) -> None:
         """Toggles the Power Button of the Printer by moving the Motor to the Pressed Position and then back to the Initial"""
         if not Motor.is_supported():
             return

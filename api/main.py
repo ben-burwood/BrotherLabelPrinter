@@ -21,7 +21,7 @@ async def lifespan(app: FastAPI):
     PrinterManager.toggle_power_button(config.motor_initial, config.motor_pressed)
     time.sleep(5)
 
-    PrinterManager(config.backend, config.printer)
+    PrinterManager(config.backend, config.printer, config.vendor_id, config.product_id)
 
     yield
 

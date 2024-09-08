@@ -8,7 +8,7 @@ services:
       - "80:80"
     privileged: true
     devices:
-      - /dev/bus/usb/004/007:/dev/usb/001  # USB Printer
-    volumes:
-      - /sys/class/pwm/pwmchip0/pwm1/:/sys/class/pwm/pwmchip0/pwm1
+      - /dev/bus/usb:/dev/usb  # USB Printer
+    # volumes:
+      # - /sys/class/pwm/pwmchip0/pwm1/:/sys/class/pwm/pwmchip0/pwm1
     restart: always

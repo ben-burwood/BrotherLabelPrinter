@@ -1,6 +1,9 @@
 backend: usb
 printer: PTP_700
 
+vendor_id: 0x04f9
+product_id: 0x2061
+
 media: W12
 
 font: /root/.local/share/fonts/fonts/ttf/JetBrainsMono-Regular.ttf
