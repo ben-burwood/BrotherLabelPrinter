@@ -18,6 +18,12 @@ git clone --recurse-submodules https://github.com/benbur98/BrotherLabelPrinter.g
 
 Configure the config.yaml in the api Module
 
+## SystemD Service
+
+Run `./setup.sh` to Configure the Python Environment and SystemD Service.
+
+The Service will then run as Root and Restart Policy to auto-start on Boot.
+
 ## Docker
 
 ### USB Device
