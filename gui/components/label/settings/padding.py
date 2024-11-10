@@ -1,6 +1,6 @@
 from PySide6.QtWidgets import QGridLayout, QSpinBox, QWidget
 
-from BrotherLabelPrinterControl.labels.text import Padding
+from brother_label_printer_control.labels.text import Padding
 
 
 class PaddingWidget(QWidget):
@@ -12,7 +12,12 @@ class PaddingWidget(QWidget):
         self._bottom_edit = QSpinBox()
         self._left_edit = QSpinBox()
 
-        for spin_box in [self._top_edit, self._right_edit, self._bottom_edit, self._left_edit]:
+        for spin_box in [
+            self._top_edit,
+            self._right_edit,
+            self._bottom_edit,
+            self._left_edit,
+        ]:
             spin_box.setRange(0, 10)
 
         layout = QGridLayout()

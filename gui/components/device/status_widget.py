@@ -7,7 +7,7 @@ from PySide6.QtWidgets import (
     QWidget,
 )
 
-from BrotherLabelPrinterControl.printers import GenericPrinter
+from brother_label_printer_control.printers import GenericPrinter
 
 
 class StatusWidget(QWidget):

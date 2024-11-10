@@ -1,7 +1,7 @@
 import subprocess
 
 from . import MotorError
-from .constants import PWM_PATH, PWM_PERIOD, MotorPosition
+from .constants import MotorPosition, PWM_PATH, PWM_PERIOD
 
 
 class Motor:
