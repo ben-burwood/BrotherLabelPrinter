@@ -1,8 +1,8 @@
 from PySide6.QtCore import Signal
 from PySide6.QtWidgets import QPushButton, QVBoxLayout, QWidget
+from brother_label_printer_control.printers import GenericPrinter
+from brother_label_printer_control.printers.main import Printer
 
-from BrotherLabelPrinterControl.printers import GenericPrinter
-from BrotherLabelPrinterControl.printers.main import Printer
 from gui.components.device.connection_widget import ConnectionWidget
 from gui.components.device.device_selector_widget import DeviceSelectorWidget
 
@@ -17,7 +17,9 @@ class DeviceWidget(QWidget):
 
         self.connection_type_widget = ConnectionWidget()
 
-        self.device_selector_widget = DeviceSelectorWidget(devices=[d.name for d in Printer])
+        self.device_selector_widget = DeviceSelectorWidget(
+            devices=[d.name for d in Printer]
+        )
 
         self.connect_button = QPushButton("Connect")
         self.connect_button.clicked.connect(self.connect_device)

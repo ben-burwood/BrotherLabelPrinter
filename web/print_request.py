@@ -1,9 +1,8 @@
+from brother_label_printer_control.constants import Media
+from brother_label_printer_control.labels.box import Box
+from brother_label_printer_control.labels.label import Label
+from brother_label_printer_control.labels.text import Padding, Text
 from pydantic import BaseModel, Field, field_validator
-
-from BrotherLabelPrinterControl.constants import Media
-from BrotherLabelPrinterControl.labels.box import Box
-from BrotherLabelPrinterControl.labels.label import Label
-from BrotherLabelPrinterControl.labels.text import Padding, Text
 
 from .config import Config
 
@@ -11,7 +10,9 @@ from .config import Config
 class PrintRequest(BaseModel):
     text: str
     height: int
-    padding: Padding = Field(default_factory=lambda: Padding(top=0, right=0, bottom=0, left=0))
+    padding: Padding = Field(
+        default_factory=lambda: Padding(top=0, right=0, bottom=0, left=0)
+    )
     font: str = Field(default_factory=lambda: Config.get().font)
     media: Media = Field(default_factory=lambda: Config.get().media)
 
@@ -28,7 +29,9 @@ class PrintRequest(BaseModel):
         return media
 
     def generate_label(self, media: Media) -> Label:
-        height = min(media.value.printarea, self.height)  # Cap the Height to the media's printarea
+        height = min(
+            media.value.printarea, self.height
+        )  # Cap the Height to the media's printarea
 
         text = Text(height, self.text, font_path=self.font, padding=self.padding)
 

@@ -2,6 +2,7 @@ import time
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
 
 from . import BrotherPrinterApiError
 from .config import Config
@@ -30,7 +31,8 @@ app.router.lifespan_context = lifespan
 app.include_router(config_router)
 app.include_router(print_router)
 
-
 @app.get("/health")
 def health():
     return {"status": "ok"}
+
+app.mount("/", StaticFiles(directory="static", html=True), name="static")

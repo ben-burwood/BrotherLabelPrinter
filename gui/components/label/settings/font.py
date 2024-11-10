@@ -1,7 +1,7 @@
 from PIL import ImageFont
 from PySide6.QtWidgets import QComboBox, QFormLayout, QSpinBox, QWidget
 
-from BrotherLabelPrinterControl.utils.font import FontPath, get_linux_fonts
+from brother_label_printer_control.utils.font import FontPath, get_linux_fonts
 
 
 class FontWidget(QWidget):

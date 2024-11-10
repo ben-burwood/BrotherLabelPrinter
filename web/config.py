@@ -1,11 +1,10 @@
 from dataclasses import dataclass
 
 import yaml
-
-from BrotherLabelPrinterControl.backends.main import Backend
-from BrotherLabelPrinterControl.constants import Media
-from BrotherLabelPrinterControl.printers.main import Printer
-from BrotherLabelPrinterControl.utils.font import get_fonts
+from brother_label_printer_control.backends.main import Backend
+from brother_label_printer_control.constants import Media
+from brother_label_printer_control.printers.main import Printer
+from brother_label_printer_control.utils.font import get_fonts
 
 CONFIG_FILE = "config.yaml"
 
@@ -27,6 +26,7 @@ class Config:
     """
     Handles the Configuration of the PrintServer - from the YAML Config File
     """
+
     backend: Backend | None
     printer: Printer | None
     vendor_id: int | None

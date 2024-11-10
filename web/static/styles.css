@@ -1,0 +1,107 @@
+:root {
+  --button_radius: 0.5em;
+  --border_thickness: 2px;
+  --button_color: #e8e8e8;
+  --button_outline_color: #000000;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #32608b;
+}
+
+header h1 {
+  font-size: 70px;
+  text-align: center;
+  background-image: linear-gradient(to top, #01101f, #0e3379);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.form_group {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  margin: 10px;
+}
+
+label {
+  font-weight: 600;
+  margin: 5px 0;
+}
+
+button {
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--button_radius);
+  background: var(--button_outline_color);
+}
+
+.button_top {
+  display: block;
+  box-sizing: border-box;
+  border: var(--border_thickness) solid var(--button_outline_color);
+  border-radius: var(--button_radius);
+  padding: 0.5em 2em;
+  background: var(--button_color);
+  color: var(--button_outline_color);
+  transform: translateY(-0.2em);
+  transition: transform 0.1s ease;
+}
+
+button:hover .button_top {
+  transform: translateY(-0.33em);
+}
+
+button:active .button_top {
+  transform: translateY(0);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+button:disabled .button_top {
+  background: #cccccc;
+  color: #666666;
+  border-color: #666666;
+  transform: none;
+  transition: none;
+}
+
+
+.clearBtn:hover {
+  color: #ffffff;
+}
+
+.clearBtn:hover {
+  background: #ff0000;
+}
+
+
+.kbInput {
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: var(--border_thickness) solid var(--button_outline_color);
+  border-radius: var(--button_radius);
+  box-shadow: 2.5px 3px 0 var(--button_outline_color);
+  outline: none;
+  transition: ease 0.25s;
+}
+
+.kbInput:focus {
+  box-shadow: 5.5px 7px 0 var(--button_outline_color);
+  background: var(--button_color);
+}

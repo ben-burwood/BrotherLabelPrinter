@@ -1,6 +1,6 @@
 from PySide6.QtWidgets import QButtonGroup, QHBoxLayout, QRadioButton, QWidget
 
-from BrotherLabelPrinterControl.backends.main import Backend
+from brother_label_printer_control.backends.main import Backend
 
 
 class ConnectionWidget(QWidget):

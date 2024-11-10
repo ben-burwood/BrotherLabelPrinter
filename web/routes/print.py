@@ -1,10 +1,9 @@
+from brother_label_printer_control.job import Job
 from fastapi import APIRouter, Depends
 
-from BrotherLabelPrinterControl.job import Job
-
+from .config import Config
 from ..print_request import PrintRequest
 from ..printer_manager import PrinterManager
-from .config import Config
 
 router = APIRouter()
 
@@ -14,7 +13,11 @@ def get_printer_manager(config: Config = Depends(Config.get)) -> "PrinterManager
 
 
 @router.get("/print")
-def print_label(request: PrintRequest, printer_manager: PrinterManager = Depends(get_printer_manager)):
+@router.post("/print")
+def print_label(
+    request: PrintRequest,
+    printer_manager: PrinterManager = Depends(get_printer_manager),
+):
     printer = printer_manager.printer
 
     label = request.generate_label(request.media)

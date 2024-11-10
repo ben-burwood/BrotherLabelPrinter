@@ -1,6 +1,6 @@
 from PySide6.QtWidgets import QComboBox, QHBoxLayout, QWidget
 
-from labelprinterkit.printers.main import Printer
+from brother_label_printer_control.printers.main import Printer
 
 
 class DeviceSelectorWidget(QWidget):

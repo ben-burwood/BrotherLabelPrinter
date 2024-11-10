@@ -10,7 +10,10 @@ cd BrotherLabelPrinterControl
 pip install --no-cache-dir --upgrade -r requirements.txt
 pip install --no-cache-dir .  # Build and Install BrotherLabelPrinterControl Submodule
 
-cd ../backend
+cd ../motor
+pip install --no-cache-dir .  # Build and Install ServoMotorControl Submodule
+
+cd ../web
 pip install --no-cache-dir --upgrade -r requirements.txt
 
 sudo cp ../label-printer.service /etc/systemd/system/label-printer.service

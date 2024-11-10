@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 User=root
-WorkingDirectory=/root/BrotherLabelPrinter/backend
+WorkingDirectory=/root/BrotherLabelPrinter/web
 ExecStartPre=/bin/bash -c 'source /root/BrotherLabelPrinter/venv/bin/activate'
 ExecStart=/root/BrotherLabelPrinter/venv/bin/python -m fastapi run main.py --port 80
 Restart=always
