@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Label Printer</title>
+</head>
+
+<body>
+    <header>
+        <h1>Print</h1>
+    </header>
+
+    <div style="display: flex; flex-direction: column; align-items: center;">
+        <div>
+            <input type="text" class="kbInput" id="textInput" placeholder="Label text...">
+        </div>
+        <div style="margin-top: 20px;">
+            <input type="range" class="rangeInput" id="sizeInput" min="10" max="70" value="60" step="5">
+            <input type="number" class="kbInput" id="sizeNumber" min="10" max="70" value="60">
+        </div>
+        <div style="margin-top: 30px;">
+            <button id="printButton" onclick="printViaApi()">
+                <span class="button_top">Print</span>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('sizeInput').addEventListener('input', function () {
+            const value = this.value;
+            document.getElementById('sizeNumber').value = value;
+        });
+
+        document.getElementById('sizeNumber').addEventListener('input', function () {
+            const value = this.value;
+            document.getElementById('sizeInput').value = value;
+        });
+
+        function printViaApi() {
+            const printButton = document.getElementById('printButton');
+            printButton.disabled = true;
+
+            const data = {
+                text: document.getElementById('textInput').value,
+                height: document.getElementById('sizeInput').value
+            };
+
+            fetch('https://api.example.com/print', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ data: data })
+            })
+                .then(response => response.json())
+                .then(result => {
+                    console.log('Success:', result);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                })
+                .finally(() => {
+                    printButton.disabled = false;
+                });
+        }
+    </script>
+</body>
+
+</html>
