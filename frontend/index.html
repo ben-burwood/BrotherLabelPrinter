@@ -16,7 +16,10 @@
     <form id="printForm" onsubmit="event.preventDefault(); printViaApi();">
         <div class="form_group">
             <label for="text">Text</label>
-            <input type="text" name="text" class="kbInput" placeholder="Label text..." required>
+            <div>
+                <input type="text" name="text" id="textInput" class="kbInput" placeholder="Label text..." required>
+                <button class="clearBtn" type="button" onclick="clearText()">X</button>
+            </div>
         </div>
         <div class="form_group" style="margin-top: 20px;">
             <label for="height">Height</label>
@@ -42,6 +45,10 @@
                 const value = this.value;
                 document.getElementById('sizeInput').value = value;
             });
+
+            function clearText() {
+                document.getElementById('textInput').value = '';
+            }
 
             function printViaApi() {
                 const printButton = document.getElementById('printButton');

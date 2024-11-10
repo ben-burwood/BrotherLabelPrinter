@@ -82,6 +82,15 @@ button:disabled .button_top {
 }
 
 
+.clearBtn:hover {
+  color: #ffffff;
+}
+
+.clearBtn:hover {
+  background: #ff0000;
+}
+
+
 .kbInput {
   padding: 0.8rem;
   font-size: 1rem;
