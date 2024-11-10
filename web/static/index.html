@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Label Printer</title>
+</head>
+
+<body>
+    <header>
+        <h1>Label Print</h1>
+    </header>
+
+    <form id="printForm" onsubmit="event.preventDefault(); printViaApi();">
+        <div class="form_group">
+            <label for="text">Text</label>
+            <div>
+                <input type="text" name="text" id="textInput" class="kbInput" placeholder="Label text..." required>
+                <button class="clearBtn" type="button" onclick="clearText()">X</button>
+            </div>
+        </div>
+        <div class="form_group" style="margin-top: 20px;">
+            <label for="height">Height</label>
+            <div>
+                <input type="range" class="rangeInput" id="sizeInput" min="10" max="70" value="60" step="5">
+                <input type="number" name="height" class="kbInput" id="sizeNumber" min="10" max="70" value="60">
+            </div>
+        </div>
+        <div style="margin-top: 30px;">
+            <button type="submit" id="printButton">
+                <span class="button_top">Print</span>
+            </button>
+        </div>
+
+        <script src="scripts.js"></script>
+</body>
+
+</html>
