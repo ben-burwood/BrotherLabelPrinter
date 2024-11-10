@@ -5,13 +5,38 @@
   --button_outline_color: #000000;
 }
 
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #32608b;
+}
+
 header h1 {
   font-size: 70px;
   text-align: center;
-  background-image: linear-gradient(to top, #0978df, #93a9d3c9);
+  background-image: linear-gradient(to top, #01101f, #0e3379);
   color: transparent;
   background-clip: text;
   -webkit-background-clip: text;
+}
+
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.form_group {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  margin: 10px;
+}
+
+label {
+  font-weight: 600;
+  margin: 5px 0;
 }
 
 button {
