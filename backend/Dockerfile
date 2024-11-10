@@ -15,10 +15,10 @@ RUN pip install --no-cache-dir .
 
 WORKDIR /
 
-COPY ./api/requirements.txt /requirements.txt
+COPY ./backend/requirements.txt /requirements.txt
 RUN pip install --no-cache-dir --upgrade -r /requirements.txt
 
-COPY ./api /app
+COPY ./backend /app
 COPY ./motor /app/motor
 
 WORKDIR /app

@@ -1,10 +1,11 @@
 from dataclasses import dataclass
 
 import yaml
-from labelprinterkit.backends.main import Backend
-from labelprinterkit.constants import Media
-from labelprinterkit.printers.main import Printer
-from labelprinterkit.utils.font import get_fonts
+
+from BrotherLabelPrinterControl.backends.main import Backend
+from BrotherLabelPrinterControl.constants import Media
+from BrotherLabelPrinterControl.printers.main import Printer
+from BrotherLabelPrinterControl.utils.font import get_fonts
 
 CONFIG_FILE = "config.yaml"
 

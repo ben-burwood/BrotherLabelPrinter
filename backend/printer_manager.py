@@ -1,10 +1,9 @@
 import time
 
-from labelprinterkit.backends.main import Backend
-from labelprinterkit.backends.usb import PyUSBBackend
-from labelprinterkit.printers import GenericPrinter
-from labelprinterkit.printers.main import Printer
-
+from BrotherLabelPrinterControl.backends.main import Backend
+from BrotherLabelPrinterControl.backends.usb import PyUSBBackend
+from BrotherLabelPrinterControl.printers import GenericPrinter
+from BrotherLabelPrinterControl.printers.main import Printer
 from motor.motor import Motor
 
 

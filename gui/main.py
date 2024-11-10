@@ -1,11 +1,10 @@
 import sys
 
-from PySide6.QtWidgets import QApplication, QFrame, QMainWindow, QVBoxLayout, QWidget
-
 from components.device.device_widget import DeviceWidget
 from components.device.status_widget import StatusWidget
 from components.label.label_settings_widget import LabelSettingsWidget
 from components.label.label_widget import LabelWidget
+from PySide6.QtWidgets import QApplication, QFrame, QMainWindow, QVBoxLayout, QWidget
 
 
 class MainWindow(QMainWindow):

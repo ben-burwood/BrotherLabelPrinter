@@ -1,9 +1,10 @@
 from fastapi import APIRouter, Depends
-from labelprinterkit.job import Job
 
-from .config import Config
+from BrotherLabelPrinterControl.job import Job
+
 from ..print_request import PrintRequest
 from ..printer_manager import PrinterManager
+from .config import Config
 
 router = APIRouter()
 

@@ -16,7 +16,7 @@ Clone the repository and include submodules:
 git clone --recurse-submodules https://github.com/benbur98/BrotherLabelPrinter.git
 ```
 
-Configure the config.yaml in the api Module
+Configure the config.yaml in the backend Module
 
 ## SystemD Service
 

@@ -1,9 +1,6 @@
 services:
-  print_server:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: print_server
+  fastapi:
+    container_name: backend_print_server
     ports:
       - "80:80"
     privileged: true

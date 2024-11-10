@@ -1,8 +1,8 @@
 from PySide6.QtCore import Signal
 from PySide6.QtWidgets import QPushButton, QVBoxLayout, QWidget
-from labelprinterkit.printers import GenericPrinter
-from labelprinterkit.printers.main import Printer
 
+from BrotherLabelPrinterControl.printers import GenericPrinter
+from BrotherLabelPrinterControl.printers.main import Printer
 from gui.components.device.connection_widget import ConnectionWidget
 from gui.components.device.device_selector_widget import DeviceSelectorWidget
 

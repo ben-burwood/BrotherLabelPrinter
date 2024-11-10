@@ -1,8 +1,9 @@
-from labelprinterkit.constants import Media
-from labelprinterkit.labels.box import Box
-from labelprinterkit.labels.label import Label
-from labelprinterkit.labels.text import Padding, Text
 from pydantic import BaseModel, Field, field_validator
+
+from BrotherLabelPrinterControl.constants import Media
+from BrotherLabelPrinterControl.labels.box import Box
+from BrotherLabelPrinterControl.labels.label import Label
+from BrotherLabelPrinterControl.labels.text import Padding, Text
 
 from .config import Config
 

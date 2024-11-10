@@ -1,6 +1,6 @@
 from PySide6.QtWidgets import QComboBox, QHBoxLayout, QWidget
 
-from labelprinterkit.constants import Media
+from BrotherLabelPrinterControl.constants import Media
 
 
 class MediaWidget(QWidget):
