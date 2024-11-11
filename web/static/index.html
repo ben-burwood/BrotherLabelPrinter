@@ -28,6 +28,18 @@
                 <input type="number" name="height" class="kbInput" id="sizeNumber" min="10" max="70" value="60">
             </div>
         </div>
+        <div class="form_group" style="margin-top: 20px;">
+            <div>
+                <label for="padding">Padding</label>
+                <button type="button" id="collapsePaddingBtn">^</button>
+            </div>
+            <div id="paddingGrp" class="padding-grid">
+                <input type="number" name="padding_left" class="kbInput" style="grid-area: left;" min="0" max="69" value="0" required>
+                <input type="number" name="padding_top" class="kbInput" style="grid-area: top;" min="0" max="69" value="0" required>
+                <input type="number" name="padding_right" class="kbInput" style="grid-area: right;" min="0" max="69" value="0" required>
+                <input type="number" name="padding_bottom" class="kbInput" style="grid-area: bottom;" min="0" max="69" value="0" required>
+            </div>
+        </div>
         <div style="margin-top: 30px;">
             <button type="submit" id="printButton">
                 <span class="button_top">Print</span>

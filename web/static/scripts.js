@@ -8,6 +8,12 @@ document.getElementById('sizeNumber').addEventListener('input', function () {
     document.getElementById('sizeInput').value = value;
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("collapsePaddingBtn").addEventListener("click", function () {
+        document.getElementById("paddingGrp").classList.toggle("active");
+    });
+});
+
 function clearText() {
     document.getElementById('textInput').value = '';
 }
@@ -19,6 +25,17 @@ function printViaApi() {
     const form = document.getElementById('printForm');
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
+
+    data.padding = {
+        left: parseInt(data.padding_left),
+        top: parseInt(data.padding_top),
+        right: parseInt(data.padding_right),
+        bottom: parseInt(data.padding_bottom)
+    };
+    delete data.padding_left;
+    delete data.padding_top;
+    delete data.padding_right;
+    delete data.padding_bottom;
 
     fetch('/print', {
         method: 'POST',
