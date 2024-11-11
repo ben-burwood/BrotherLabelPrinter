@@ -10,6 +10,7 @@ from servo_motor_control.motor import Motor
 
 from .settings import Settings
 
+
 @dataclass(frozen=True)
 class MotorPowerButtonControl:
     initial_position: int = 50
@@ -97,4 +98,5 @@ class PrinterManager:
             settings.backend,
             settings.printer,
             MotorPowerButtonControl.get(settings.motor_initial, settings.motor_final),
+        )
         )
