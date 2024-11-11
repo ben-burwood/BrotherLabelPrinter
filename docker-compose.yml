@@ -4,11 +4,24 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: print_server
+    environment:
+      - BACKEND=${BACKEND}
+      - PRINTER=${PRINTER}
+      - VENDOR_ID=${VENDOR_ID}
+      - PRODUCT_ID=${PRODUCT_ID}
+      - MEDIA=${MEDIA}
+      - FONT=${FONT}
     ports:
       - "80:80"
     privileged: true
     devices:
       - /dev/bus/usb:/dev/usb  # USB Printer
-    # volumes:
+      # volumes:
       # - /sys/class/pwm/pwmchip0/pwm1/:/sys/class/pwm/pwmchip0/pwm1
     restart: always
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:80/health" ]
+      interval: 60s
+      timeout: 10s
+      retries: 2
+      start_period: 30s
