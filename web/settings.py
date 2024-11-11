@@ -7,7 +7,6 @@ from pydantic_settings import BaseSettings
 
 from . import BrotherPrinterApiError
 
-
 class Settings(BaseSettings):
     """Get the Settings from the Environment"""
 
@@ -15,8 +14,8 @@ class Settings(BaseSettings):
     printer: Printer | None
     vendor_id: int | None
     product_id: int | None
-    motor_initial: int
-    motor_final: int
+    motor_initial: int | None
+    motor_final: int | None
     media: Media | None
     font: str | None
 
