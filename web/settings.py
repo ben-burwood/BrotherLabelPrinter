@@ -1,50 +1,53 @@
+from functools import lru_cache
+from typing import Optional
+
 from brother_label_printer_control.backends.main import Backend
 from brother_label_printer_control.constants import Media
 from brother_label_printer_control.printers.main import Printer
-from brother_label_printer_control.utils.font import get_fonts
-from pydantic import model_validator
-from pydantic_settings import BaseSettings
+from pydantic import Field, field_validator
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
-from . import BrotherPrinterApiError
+from .interfacing.font import get_default_font
+from .interfacing.motor_control import MotorPowerButtonControl
 
 class Settings(BaseSettings):
     """Get the Settings from the Environment"""
 
-    backend: Backend | None
-    printer: Printer | None
-    vendor_id: int | None
-    product_id: int | None
-    motor_initial: int | None
-    motor_final: int | None
-    media: Media | None
-    font: str | None
+    model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
 
-    @classmethod
-    @model_validator(mode="before")
-    def convert_fields(cls, values):
-        backend_value = values.get("backend")
-        if not backend_value:
-            raise BrotherPrinterApiError("Must Provide a Valid Backend")
-        values["backend"] = Backend.get(backend_value)
+    backend: Backend
+    printer: Printer
+    media: Media
+    font: str = Field(default_factory=lambda: get_default_font())
+    vendor_id: int | None = None
+    product_id: int | None = None
+    motor_initial: int | None = None
+    motor_final: int | None = None
 
-        printer_value = values.get("printer")
-        if not printer_value:
-            raise BrotherPrinterApiError("Must Provide a Valid Printer")
-        values["printer"] = Printer.get(printer_value)
-
-        media_value = values.get("media")
-        if media_value:
-            values["media"] = Media.get(media_value)
-
-        if not values.get("font"):
-            values["font"] = cls._get_default_font()
-
-        return values
-
-    @staticmethod
-    def _get_default_font() -> str | None:
-        """Get the First Available TrueType Font in Linux as Default"""
-        try:
-            return list(get_fonts().values())[0][0].as_posix()
-        except IndexError:
+    @field_validator(
+        "vendor_id", "product_id", "motor_initial", "motor_final", mode="before"
+    )
+    def parse_optional_int(cls, value: Optional[str]) -> Optional[int]:
+        if value == "" or value is None:
             return None
+        return int(value)
+
+    @field_validator("backend", mode="before")
+    def set_backend(cls, backend: str) -> Backend:
+        return Backend.get(backend)
+
+    @field_validator("printer", mode="before")
+    def set_printer(cls, printer: str) -> Printer:
+        return Printer.get(printer)
+
+    @field_validator("media", mode="before")
+    def set_media(cls, media: str) -> Media:
+        return Media.get(media)
+
+    @property
+    def motor_control(self) -> MotorPowerButtonControl | None:
+        return MotorPowerButtonControl.get(self.motor_initial, self.motor_final)
+
+@lru_cache
+def get_settings():
+    return Settings()

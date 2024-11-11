@@ -1,16 +1,19 @@
 services:
   fastapi:
+    container_name: print_server
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: print_server
+    env_file: web/.env
     environment:
       - BACKEND=${BACKEND}
       - PRINTER=${PRINTER}
-      - VENDOR_ID=${VENDOR_ID}
-      - PRODUCT_ID=${PRODUCT_ID}
       - MEDIA=${MEDIA}
       - FONT=${FONT}
+      - VENDOR_ID=${VENDOR_ID}
+      - PRODUCT_ID=${PRODUCT_ID}
+      - MOTOR_INITIAL=${MOTOR_INITIAL}
+      - MOTOR_FINAL=${MOTOR_FINAL}
     ports:
       - "80:80"
     privileged: true
@@ -22,6 +25,6 @@ services:
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:80/health" ]
       interval: 60s
-      timeout: 10s
+      timeout: 5s
       retries: 2
-      start_period: 30s
+      start_period: 10s

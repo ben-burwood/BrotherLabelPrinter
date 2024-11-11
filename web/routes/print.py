@@ -1,8 +1,8 @@
 from brother_label_printer_control.job import Job
 from fastapi import APIRouter, Depends
 
-from ..print_request import PrintRequest
-from ..printer_manager import PrinterManager
+from ..interfacing.printer_manager import PrinterManager
+from ..requests.print_request import PrintRequest
 
 router = APIRouter()
 
