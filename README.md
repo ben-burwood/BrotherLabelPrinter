@@ -34,14 +34,3 @@ The device path is usually in the format /dev/bus/usb/00x/00y, where 00x is the 
 
 `Bus 004 Device 007: ID 0000:0000 Brother Industries, Ltd PT-P700 P-touch Label Printer`
     In the example, the device path would be /dev/bus/usb/004/007.
-
-### Run
-
-Ensure that Docker and DockerCompose are installed on the Host System
-```sh
-apt install docker docker-compose
-```
-
-```sh
-docker-compose up -d
-```

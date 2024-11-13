@@ -1,9 +1,7 @@
 services:
   fastapi:
     container_name: print_server
-    build:
-      context: .
-      dockerfile: Dockerfile
+    build: .
     env_file: web/.env
     environment:
       - BACKEND=${BACKEND}
@@ -18,9 +16,9 @@ services:
       - "80:80"
     privileged: true
     devices:
-      - /dev/bus/usb:/dev/usb  # USB Printer
-      # volumes:
-      # - /sys/class/pwm/pwmchip0/pwm1/:/sys/class/pwm/pwmchip0/pwm1
+      - /dev/bus/usb:/dev/bus/usb  # USB Printer
+    volumes:
+      - /sys/class/pwm:/sys/class/pwm
     restart: always
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:80/health" ]
